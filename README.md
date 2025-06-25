@@ -131,3 +131,12 @@ product-manager/
 ├── product-manager/        ← Backend
 └── product-manager-ui/     ← Frontend
 ```
+
+## 👨‍💻 Auteur
+
+Développé par :
+
+**Youssef Achkir**
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/youssef-achkir/)
+- 💻 [GitHub](https://github.com/youssef2002-achkir)
