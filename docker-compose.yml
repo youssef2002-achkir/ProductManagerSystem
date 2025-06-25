@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-container-db
+    environment:
+      POSTGRES_DB: productdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2002
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - springboot-network
+
+  backend:
+    build:
+      context: ./product-manager
+      dockerfile: Dockerfile
+    container_name: product-manager-container
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/productdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 2002
+    networks:
+      - springboot-network
+
+  frontend:
+    build:
+      context: ./product-manager-ui
+      dockerfile: Dockerfile
+    container_name: product-manager-front
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    networks:
+      - springboot-network
+
+volumes:
+  postgres-data:
+
+networks:
+  springboot-network:
+    driver: bridge
