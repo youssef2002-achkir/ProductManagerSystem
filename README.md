@@ -39,8 +39,8 @@ cd product-manager
 | POST | /api/products | Ajouter un produit |
 | GET | /api/products | Liste des produits |
 | GET | /api/products/{id} | Détail d'un produit |
-| PUT | /api/products/{id} | Modifier un produit |
-| DELETE | /api/products/{id} | Supprimer un produit |
+| PUT | /api/products/update/{id} | Modifier un produit |
+| DELETE | /api/products/delete/{id} | Supprimer un produit |
 
 ### 🔐 Endpoints d'authentification :
 
